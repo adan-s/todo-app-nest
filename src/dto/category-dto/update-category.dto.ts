@@ -1,6 +1,6 @@
 import { IsOptional } from "class-validator";
 
-export class CreateCategoryDto{
+export class UpdateCategoryDto{
     @IsOptional()
     category_name:string;
 
