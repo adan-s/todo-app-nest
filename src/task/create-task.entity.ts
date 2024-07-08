@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
-import { Users } from './create-user.entity';
-import { Category } from './create-category.entity';
+import { Users } from '../user/create-user.entity';
+import { Category } from 'src/category/create-category.entity';
 
 @Entity()
 export class Task {

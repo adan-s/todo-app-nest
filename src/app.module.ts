@@ -1,13 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { Users,Category, Task } from './entities';
 import { UserController } from './user/users.controller';
 import { UserService } from './user/user.service';
 import { TaskController } from './task/task.controller';
 import { TaskService } from './task/task.service';
 import { CategoryController } from './category/category.controller';
 import { CategoryService } from './category/category.service';
+import { Category } from './category/create-category.entity';
+import { Users, Task } from '.';
 
 @Module({
   imports: [

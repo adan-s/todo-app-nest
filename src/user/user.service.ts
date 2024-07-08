@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CreateUserDto } from 'src/dto/user-dto/create-user.dto';
-import { UpdateUserDto } from 'src/dto/user-dto/update-user.dto';
-import { Users } from 'src/entities';
+import { CreateUserDto } from 'src/user/user-dto/create-user.dto';
+import { UpdateUserDto } from 'src/user/user-dto/update-user.dto';
 import { Repository } from 'typeorm';
+import { Users } from './create-user.entity';
 
 @Injectable()
 export class UserService {
