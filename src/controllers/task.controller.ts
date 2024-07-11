@@ -12,7 +12,7 @@ export class TaskController {
     return this.Taskservice.getAllTasks();
   }
 
-  @Get(':user_id')
+  @Get('api/:user_id')
   getUserTasks(@Param('user_id') user_id: number) {
     return this.Taskservice.getUserTasks(user_id);
   }

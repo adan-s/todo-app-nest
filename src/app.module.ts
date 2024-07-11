@@ -26,7 +26,7 @@ import { Users, Task } from './entities';
         database: configService.get<string>('DB_NAME'),
         entities: [Users, Task, Category],
         synchronize: true,
-        logging: true,
+        logging: false,
       }),
       inject: [ConfigService],
     }),
