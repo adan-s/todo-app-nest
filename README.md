@@ -7,6 +7,7 @@ This project is a ToDo web application built using NestJS for the backend and Ne
 - [About the Project](#about-the-project)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
+- [ENV File Setup](#env-file-setup)
 - [Running the Project](#running-the-project)
 
 ## About the Project
@@ -30,10 +31,19 @@ To get a local copy up and running, follow these steps:
 2. **Install Dependencies**:
    ```bash
    npm install
+      ```
+## Env file setup
+First, ensure you have the required environment variables set up. Copy the .env.example file to .env and update the environment variables accordingly.
+
+```bash
+cp .env.example .env
+```
+
 ## Running the Project
 
 To run the application, use the following command:
 
 ```bash
-npm start
+npm run dev
+
 
