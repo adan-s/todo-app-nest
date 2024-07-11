@@ -16,6 +16,12 @@ export class TaskService {
     return await this.repo.find();
   }
 
+  async getUserTasks(userId: number): Promise<Task[]> {
+    return await this.repo.find({
+      where: { user_id: userId },
+    });
+  }
+  
   async addNewTask(createTaskDto: CreateTaskDto) {
     try {
       const newTask = this.repo.create(createTaskDto);

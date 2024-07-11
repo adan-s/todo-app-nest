@@ -12,6 +12,12 @@ export class TaskController {
     return this.Taskservice.getAllTasks();
   }
 
+  @Get(':user_id')
+  getUserTasks(@Param('user_id') user_id: number) {
+    return this.Taskservice.getUserTasks(user_id);
+  }
+
+
   @Post()
   addNewTask(@Body() data: CreateTaskDto) {
     return this.Taskservice.addNewTask(data);
