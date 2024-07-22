@@ -10,7 +10,7 @@ describe('UserService', () => {
   let service: UserService;
   let repo: Repository<Users>;
 
-  const mockUserRepository = {
+  const mockUserServices = {
     find: jest.fn(),
     create: jest.fn(),
     save: jest.fn(),
@@ -22,15 +22,11 @@ describe('UserService', () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         UserService,
-        {
-          provide: getRepositoryToken(Users),
-          useValue: mockUserRepository,
-        },
       ],
-    }).compile();
+    }).overrideProvider(UserService).useValue(mockUserServices).compile();
 
     service = module.get<UserService>(UserService);
-    repo = module.get<Repository<Users>>(getRepositoryToken(Users));
+    //repo = module.get<new Repository<Users>(Users);
   });
 
   it('should be defined', () => {
@@ -42,7 +38,7 @@ describe('UserService', () => {
       const usersArray = [
         { id: 1, username: 'testuser', email: 'test@example.com' },
       ];
-      mockUserRepository.find.mockResolvedValue(usersArray);
+      mockUserServices.find.mockResolvedValue(usersArray);
 
       expect(await service.getAllUsers()).toBe(usersArray);
     });
@@ -59,8 +55,8 @@ describe('UserService', () => {
         id: 2,
         ...createUserDto,
       };
-      mockUserRepository.create.mockReturnValue(newUser);
-      mockUserRepository.save.mockResolvedValue(newUser);
+      mockUserServices.create.mockReturnValue(newUser);
+      mockUserServices.save.mockResolvedValue(newUser);
 
       expect(await service.addNewUser(createUserDto)).toBe(newUser);
     });
@@ -71,7 +67,7 @@ describe('UserService', () => {
         email: 'newuser@example.com',
         password: 'password',
       };
-      mockUserRepository.save.mockRejectedValue(new Error('Could not save user'));
+      mockUserServices.save.mockRejectedValue(new Error('Could not save user'));
 
       await expect(service.addNewUser(createUserDto)).rejects.toThrow('Could not save user');
     });
@@ -88,8 +84,8 @@ describe('UserService', () => {
         id: 1,
         ...updateUserDto,
       };
-      mockUserRepository.update.mockResolvedValue(undefined);
-      mockUserRepository.findOneBy.mockResolvedValue(updatedUser);
+      mockUserServices.update.mockResolvedValue(undefined);
+      mockUserServices.findOneBy.mockResolvedValue(updatedUser);
 
       expect(await service.updateUser(1, updateUserDto)).toBe(updatedUser);
     });
