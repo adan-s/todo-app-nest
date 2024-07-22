@@ -39,7 +39,7 @@
   "devDependencies": {
     "@nestjs/cli": "^8.2.8",
     "@nestjs/schematics": "^8.0.0",
-    "@nestjs/testing": "^8.0.0",
+    "@nestjs/testing": "^8.4.7",
     "@types/babel__core": "^7.20.5",
     "@types/babel__generator": "^7.6.8",
     "@types/babel__template": "^7.4.4",
