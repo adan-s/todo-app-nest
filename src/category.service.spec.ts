@@ -59,7 +59,7 @@ describe('CategoryService', () => {
       ...createCategoryDto,
       user: new Users(),
       tasks: [],
-    } ;
+    };
     mockCategoryRepository.create.mockReturnValue(category);
     mockCategoryRepository.save.mockResolvedValue(category);
 
@@ -76,7 +76,7 @@ describe('CategoryService', () => {
       ...updateCategoryDto,
       user: new Users(),
       tasks: [],
-    } ;
+    };
     mockCategoryRepository.update.mockResolvedValue(null);
     mockCategoryRepository.findOneBy.mockResolvedValue(category);
 
@@ -87,7 +87,6 @@ describe('CategoryService', () => {
 
   it('should delete the category', async () => {
     mockCategoryRepository.delete.mockResolvedValue(null);
-
     expect(await service.deleteCategory(1)).toBeNull();
   });
 });

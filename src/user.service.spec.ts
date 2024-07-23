@@ -69,6 +69,7 @@ describe('UserService', () => {
       id: 1,
       updateUserDto,
     };
+    
     mockUserRepository.update.mockResolvedValue(undefined);
     mockUserRepository.findOneBy.mockResolvedValue(updatedUser);
 

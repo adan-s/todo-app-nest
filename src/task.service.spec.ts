@@ -47,7 +47,7 @@ describe('TaskService', () => {
         category_id: 1,
         category: null,
         duedate: new Date(),
-      } ,
+      },
     ];
     mockTaskRepository.find.mockResolvedValue(tasks);
 
@@ -67,7 +67,7 @@ describe('TaskService', () => {
         category_id: 1,
         category: null,
         duedate: new Date(),
-      } ,
+      },
     ];
 
     mockTaskRepository.find.mockResolvedValue(tasks);
@@ -109,7 +109,7 @@ describe('TaskService', () => {
       ...updateTaskDto,
       user: null,
       category: null,
-    } ;
+    };
 
     mockTaskRepository.update.mockResolvedValue(null);
     mockTaskRepository.findOneBy.mockResolvedValue(task);
@@ -117,8 +117,9 @@ describe('TaskService', () => {
   });
 
   it('should delete the task', async () => {
-    mockTaskRepository.delete.mockResolvedValue(null);
 
+    mockTaskRepository.delete.mockResolvedValue(null);
     expect(await service.deleteTask(1)).toBeNull();
+    
   });
 });
