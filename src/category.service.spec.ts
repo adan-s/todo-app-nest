@@ -43,7 +43,7 @@ describe('CategoryService', () => {
         user_id: 1,
         user: new Users(),
         tasks: [],
-      } as Category,
+      },
     ];
     mockCategoryRepository.find.mockResolvedValue(categories);
 
@@ -59,7 +59,7 @@ describe('CategoryService', () => {
       ...createCategoryDto,
       user: new Users(),
       tasks: [],
-    } as Category;
+    } ;
     mockCategoryRepository.create.mockReturnValue(category);
     mockCategoryRepository.save.mockResolvedValue(category);
 
@@ -76,7 +76,7 @@ describe('CategoryService', () => {
       ...updateCategoryDto,
       user: new Users(),
       tasks: [],
-    } as Category;
+    } ;
     mockCategoryRepository.update.mockResolvedValue(null);
     mockCategoryRepository.findOneBy.mockResolvedValue(category);
 
