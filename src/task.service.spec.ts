@@ -88,7 +88,7 @@ describe('TaskService', () => {
       ...createTaskDto,
       user: null,
       category: null,
-    } as Task;
+    };
 
     mockTaskRepository.create.mockReturnValue(task);
     mockTaskRepository.save.mockResolvedValue(task);
