@@ -95,6 +95,21 @@ describe('TaskService', () => {
     expect(await service.addNewTask(createTaskDto)).toEqual(task);
   });
 
+
+  it('should handle error when adding a new task', async () => {
+    const createTaskDto: CreateTaskDto = {
+      title: 'New Task',
+      description: 'Task Description',
+      status: 'pending',
+      user_id: 1,
+      category_id: 1,
+      duedate: new Date(),
+    };
+
+    mockTaskRepository.save.mockRejectedValue(new Error('Could not save Task'));
+    await expect( service.addNewTask(createTaskDto)).rejects.toThrow('Could not save Task');
+  });
+
   it('should update and return the task', async () => {
     const updateTaskDto: UpdateTaskDto = {
       title: 'Updated Task',

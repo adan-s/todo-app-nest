@@ -60,10 +60,21 @@ describe('CategoryService', () => {
       user: new Users(),
       tasks: [],
     };
+
     mockCategoryRepository.create.mockReturnValue(category);
     mockCategoryRepository.save.mockResolvedValue(category);
-
     expect(await service.addNewCategory(createCategoryDto)).toEqual(category);
+  });
+
+
+  it('should handle error when adding  a new category', async () => {
+    const createCategoryDto: CreateCategoryDto = {
+      category_name: 'Personal',
+      user_id: 1,
+    };
+   
+    mockCategoryRepository.save.mockRejectedValue(new Error('Could not save Category'));
+    await expect( service.addNewCategory(createCategoryDto)).rejects.toThrow('Could not save Category');
   });
 
   it('should update and return the category', async () => {

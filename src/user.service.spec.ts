@@ -59,6 +59,17 @@ describe('UserService', () => {
     expect(await service.addNewUser(createUserDto)).toBe(newUser);
   });
 
+  it('should handle error when adding a new user', async () => {
+    const createUserDto: CreateUserDto = {
+      username: 'Jane Doe',
+      email: 'jane.doe@example.com',
+      password: 'password123',
+    };
+
+    mockUserRepository.save.mockRejectedValue(new Error('Could not save user'));
+    await expect(service.addNewUser(createUserDto)).rejects.toThrow('Could not save user');
+  });
+
   it('should successfully update a user', async () => {
     const updateUserDto: UpdateUserDto = {
       username: 'updateduser',
